@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huang.mapper.UserMapper">
+
+    <select id="findUsersByMail" parameterType="string" resultType="Users">
+        select *
+        from Users
+        where mail = #{mail}
+    </select>
+
+    <select id="findUsersById" parameterType="integer" resultType="Users">
+        select *
+        from Users
+        where id = #{id}
+    </select>
+
+    <insert id="UserRegiest" parameterType="Users">
+        INSERT into Users(username,passwd,mail) VALUES (#{username},#{passwd},#{mail})
+    </insert>
+
+</mapper>
