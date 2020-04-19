@@ -1,6 +1,9 @@
 package com.huang.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.huang.service.impl.UsersServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +32,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
+
+    private static Logger logger = LoggerFactory.getLogger(MySecurityConfig.class);
 
     /**
      * 基于数据库的用户认证
@@ -72,6 +77,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setAuthenticationSuccessHandler(new AuthenticationSuccessHandler() {
             @Override
             public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+                logger.info("security-登陆成功");
                 response.setContentType("application/json;charset=utf-8");
                 PrintWriter out = response.getWriter();
                 Map<String,Object> map = new HashMap<>();
@@ -86,6 +92,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setAuthenticationFailureHandler(new AuthenticationFailureHandler() {
             @Override
             public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
+                logger.info("security-登陆失败");
                 response.setContentType("application/json;charset=utf-8");
                 PrintWriter out = response.getWriter();
                 Map<String,Object> map = new HashMap<>();
