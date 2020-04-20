@@ -4,6 +4,8 @@ package com.huang.mapper;
 import com.huang.pojo.Users;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
+
 @Repository
 public interface UserMapper {
 
@@ -27,5 +29,12 @@ public interface UserMapper {
      * @return
      */
     Integer UserRegiest(Users users);
+
+    /**
+     * 根据邮箱更新用户头像url
+     * @param map
+     * @return
+     */
+    Integer UpdatePhoto(Map<String,String> map);
 
 }

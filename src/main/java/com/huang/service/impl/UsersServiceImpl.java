@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class UsersServiceImpl implements UsersService {
 
@@ -66,4 +68,19 @@ public class UsersServiceImpl implements UsersService {
         }
         return user;
     }
+
+    @Override
+    public Boolean UpdataPhoto(Map<String,String> map) {
+        if(map == null){
+            throw new NullPointerException("需要更新的目标不存在");
+        }
+        Integer res = userMapper.UpdatePhoto(map);
+        if (res == 1){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
 }

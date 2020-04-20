@@ -20,4 +20,9 @@
         INSERT into Users(username,passwd,mail) VALUES (#{username},#{passwd},#{mail})
     </insert>
 
+    <update id="UpdatePhoto" parameterType="map">
+        update Users
+        set photo = #{photo}
+        where mail = #{mail}
+    </update>
 </mapper>

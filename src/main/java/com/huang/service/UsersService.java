@@ -2,6 +2,8 @@ package com.huang.service;
 
 import com.huang.pojo.Users;
 
+import java.util.Map;
+
 public interface UsersService {
 
     /**
@@ -16,5 +18,12 @@ public interface UsersService {
      * @return
      */
     Users findUserByMail(String mail);
+
+    /**
+     * 更换用户头像
+     * @param map
+     * @return
+     */
+    Boolean UpdataPhoto(Map<String,String> map);
 
 }

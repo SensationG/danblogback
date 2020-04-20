@@ -4,6 +4,9 @@ spring:
     password: 12345678
     url: jdbc:mysql://localhost:3306/danblog?serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+      multipart:
+        max-file-size: 100MB
 mybatis:
   type-aliases-package: com.huang.pojo
   mapper-locations: classpath:mapper/*.xml

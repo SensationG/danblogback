@@ -52,12 +52,15 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/user/getUser").authenticated()
+                .antMatchers("/user/upload").authenticated()
                 .and()
                 .csrf().disable();
         //将下面的过滤器加进来
         http.addFilter(myAuthenticationFilter());
         //使用自定义登陆接口 /login返回一个json
         http.formLogin().loginPage("/login");
+        //开启跨域访问
+        http.cors();
 
     }
 
@@ -82,7 +85,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 PrintWriter out = response.getWriter();
                 Map<String,Object> map = new HashMap<>();
                 map.put("status",200);
-                map.put("msg",authentication.getPrincipal());//存放身份信息的类
+                map.put("msg","登陆成功");
+                //map.put("msg",authentication.getPrincipal());//存放身份信息的类
                 out.write(new ObjectMapper().writeValueAsString(map));
                 out.flush();
                 out.close();
