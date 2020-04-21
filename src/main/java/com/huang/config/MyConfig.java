@@ -27,6 +27,8 @@ public class MyConfig implements WebMvcConfigurer{
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/photo/**")
                 .addResourceLocations("file:///D:/xiaodanBlog/photo/");
+        registry.addResourceHandler("/picture/**")
+                .addResourceLocations("file:///D:/xiaodanBlog/picture/");
     }
 
     /**

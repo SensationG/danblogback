@@ -53,6 +53,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/user/getUser").authenticated()
                 .antMatchers("/user/upload").authenticated()
+                .antMatchers("/blog/pic").authenticated()
                 .and()
                 .csrf().disable();
         //将下面的过滤器加进来

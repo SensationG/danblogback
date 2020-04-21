@@ -4,6 +4,7 @@ import com.huang.pojo.Blog;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface BlogMapper {
@@ -14,4 +15,5 @@ public interface BlogMapper {
      */
     List<Blog> findAllBlogs();
 
+    Integer UploadBlog(Blog blog);
 }

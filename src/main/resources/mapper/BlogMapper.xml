@@ -19,4 +19,7 @@
         where id = #{id}
     </select>
 
+    <insert id="UploadBlog" parameterType="blog">
+        insert INTO blogs(title, content, pic, user_id) VALUES (#{title},#{content},#{pic},#{users.id})
+    </insert>
 </mapper>
