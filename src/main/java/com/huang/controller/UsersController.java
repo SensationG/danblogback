@@ -27,6 +27,17 @@ public class UsersController {
     private static Logger logger = LoggerFactory.getLogger(UsersServiceImpl.class);
 
     /**
+     * 测试用
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/test1")
+    public String PostTest(){
+        return "hello,test succeed";
+    }
+
+
+    /**
      * 用户注册
      * 返回自定义状态码 200:成功 444:失败
      * @param users
